@@ -7,6 +7,7 @@
 #' @examples
 #' create_basic_plot()
 #'
+
 create_basic_plot <- function(){
 
   ggplot2::ggplot(cars) +
@@ -37,16 +38,23 @@ theme_quiet <- function(){
   ggplot2::theme(axis.title.x =  ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(axis.text.x  =  ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(axis.ticks.x =  ggplot2::element_line(color = ggplot2::alpha("black", 0))),
-  ggplot2::theme(panel.grid.major.x = ggplot2::element_line(color = ggplot2::alpha("black", 0))),
-  ggplot2::theme(panel.grid.minor.x = ggplot2::element_line(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(axis.title.y =  ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(axis.text.y  =  ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(axis.ticks.y =  ggplot2::element_line(color = ggplot2::alpha("black", 0))),
-  ggplot2::theme(panel.grid.major.y = ggplot2::element_line(color = ggplot2::alpha("black", 0))),
-  ggplot2::theme(panel.grid.minor.y = ggplot2::element_line(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(plot.title   =  ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(plot.subtitle = ggplot2::element_text(color = ggplot2::alpha("black", 0))),
   ggplot2::theme(plot.caption  = ggplot2::element_text(color = ggplot2::alpha("black", 0)))
+  )
+
+}
+
+legend_adjust <- function(color, alpha){
+
+  list(
+    ggplot2::theme(legend.background = ggplot2::element_rect(fill = ggplot2::alpha(color, alpha))),
+    ggplot2::theme(legend.background = ggplot2::element_line(color = ggplot2::alpha(color, alpha))),
+    ggplot2::theme(legend.key = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
+    ggplot2::theme(legend.title = ggplot2::element_text(color = ggplot2::alpha(color, alpha)))
   )
 
 }
@@ -56,9 +64,7 @@ x_axis_adjust <- function(color, alpha){
   list(
   ggplot2::theme(axis.title.x = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
   ggplot2::theme( axis.text.x = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(axis.ticks.x = ggplot2::element_line(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(panel.grid.major.x = ggplot2::element_line(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(panel.grid.minor.x = ggplot2::element_line(color = ggplot2::alpha(color, alpha)))
+  ggplot2::theme(axis.ticks.x = ggplot2::element_line(color = ggplot2::alpha(color, alpha)))
   )
 
 }
@@ -66,11 +72,9 @@ x_axis_adjust <- function(color, alpha){
 y_axis_adjust <- function(color, alpha){
 
   list(
-  ggplot2::theme(axis.title.y = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme( axis.text.y = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(axis.ticks.y = ggplot2::element_line(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(panel.grid.major.y = ggplot2::element_line(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(panel.grid.minor.y = ggplot2::element_line(color = ggplot2::alpha(color, alpha)))
+  ggplot2::theme(axis.title.y =       ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
+  ggplot2::theme( axis.text.y =       ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
+  ggplot2::theme(axis.ticks.y =       ggplot2::element_line(color = ggplot2::alpha(color, alpha)))
   )
 
 }
@@ -81,7 +85,7 @@ titles_adjust <- function(color, alpha){
   ggplot2::theme(plot.title    = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
   ggplot2::theme(plot.subtitle = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
   ggplot2::theme(plot.caption  = ggplot2::element_text(color = ggplot2::alpha(color, alpha))),
-  ggplot2::theme(plot.tag = ggplot2::element_text(color = ggplot2::alpha(color, alpha)))
+  ggplot2::theme(plot.tag      = ggplot2::element_text(color = ggplot2::alpha(color, alpha)))
   )
 
 }

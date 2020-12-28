@@ -8,8 +8,8 @@
 <!-- badges: end -->
 
 The goal of ggquiet is to be able to reveal components of a fully built
-up plot. The strategy is to set elements to fully transparent, and then
-‘turn on’ the element by changing the transparency to opaque.
+up plot – quietly. The strategy is to set elements to fully transparent,
+and then ‘turn on’ the element by changing the transparency to opaque.
 
 “Quiet” refers to two things. If you simply build up a ggplot you will
 get “noisiness” in that the plot space will bounce around to adjust for
@@ -48,7 +48,8 @@ library(ggquiet)
 ggplot(data = cars) +
   aes(x = speed) +
   aes(y = dist) +
-  geom_point()
+  geom_point() +
+  aes(color = speed) 
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -60,3 +61,15 @@ last_plot() +
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" />
+
+``` r
+
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_blank() +
+  theme_quiet() +
+  ggquiet:::x_axis_adjust(color = "grey35", alpha = 1)
+```
+
+<img src="man/figures/README-example-3.png" width="100%" />

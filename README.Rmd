@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ggquiet is to be able to reveal components of a fully built up plot.  The strategy is to set elements to fully transparent, and then 'turn on' the element by changing the transparency to opaque. 
+The goal of ggquiet is to be able to reveal components of a fully built up plot -- quietly.  The strategy is to set elements to fully transparent, and then 'turn on' the element by changing the transparency to opaque. 
 
 "Quiet" refers to two things.  If you simply build up a ggplot you will get "noisiness" in that the plot space will bounce around to adjust for title positions, axis positions and legend positions (oops! I haven't though about how to work on this part - legends - ugh I'm not sure we can get it done. hmmm hmm hmm).  By having the elements there but fully transparent (they are also "quiet"), we won't get the shifting around of the plot space as we "add" them. 
 
@@ -48,9 +48,17 @@ library(ggquiet)
 ggplot(data = cars) +
   aes(x = speed) +
   aes(y = dist) +
-  geom_point()
+  geom_point() +
+  aes(color = speed) 
 
 last_plot() +
   theme_quiet()
+
+ggplot(data = cars) +
+  aes(x = speed) +
+  aes(y = dist) +
+  geom_blank() +
+  theme_quiet() +
+  ggquiet:::x_axis_adjust(color = "grey35", alpha = 1)
 ```
 
