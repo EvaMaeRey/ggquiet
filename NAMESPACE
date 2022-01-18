@@ -2,3 +2,9 @@
 
 export(create_basic_plot)
 export(theme_quiet)
+export(theme_titles_loud)
+export(theme_titles_quiet)
+export(theme_x_axis_loud)
+export(theme_x_axis_quiet)
+export(theme_y_axis_loud)
+export(theme_y_axis_quiet)
